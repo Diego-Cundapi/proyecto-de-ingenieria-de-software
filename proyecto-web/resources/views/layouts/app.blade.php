@@ -8,29 +8,22 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+        
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
+    <body class="min-h-screen bg-gradient-to-r from-sky-400 to-violet-800">
+        <div class="">
+            <!-- Page Heading  en caso de que este logeado-->
+            @include('layouts/navigation')
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+                
+                @livewireScripts
             </main>
         </div>
+
     </body>
 </html>
