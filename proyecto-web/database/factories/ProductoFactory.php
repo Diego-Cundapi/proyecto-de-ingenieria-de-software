@@ -17,7 +17,14 @@ class ProductoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            //en los factories no ponemos llaves foraneas, solo en el seeder
+            'name' =>  fake()->word(),
+            'descripcion' =>  fake()->sentence(),
+            'modelo' =>  fake()->sentence(),
+            'marca' =>  fake()->word(),
+            'clave' =>  fake()->word(),
+            'price' =>  fake()->randomFloat(2, 0, 9999),
+            'image' =>  fake()->imageUrl(),
         ];
     }
 }

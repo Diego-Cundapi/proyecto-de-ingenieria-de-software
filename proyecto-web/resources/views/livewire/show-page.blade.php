@@ -17,58 +17,24 @@
         </ul>
     </div>
 
-    <div class ="w-full flex bg-slate-200 rounded-md">
+    <div class ="w-full flex bg-slate-200 rounded-md min-h-screen">
         <div class="w-full gap-4 grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 py-2">
-            <div  class="bg-red-500 rounded-md">
-                <a href="" class="bg-red-500 gap-4" >
+            <div  class="bg-red-500 rounded-md p-2 w-48 h-48">
+                <a href="" class="block bg-red-500 gap-4 w-full h-full" >
                     <img src="" alt="Foto" class="h8">
                     <p>Precio</p>
                     <p>Name del producto</p>
-                    <p>descripcion del producto</p>
+                    <p class="truncate whitespace-nowrap text-overflow-ellipsis">descripcion del productofnkmvklmdfklvmkldfmvlkndklvkdvlknkvnkldfvlkdfmvkldfklnlkvknlfkndklvfldkvdlkkldfvlknfdklvnlkfln</p>
                 </a>
             </div>
-            <div  class="bg-red-500 gap-4 rounded-md">
-                <a href="" class="bg-red-500 gap-4" >
+            <div  class="bg-red-500 rounded-md p-2 w-48 h-48">
+                <a href="" class="block bg-red-500 gap-4 w-full h-full" >
                     <img src="" alt="Foto" class="h8">
                     <p>Precio</p>
                     <p>Name del producto</p>
-                    <p>descripcion del producto</p>
+                    <p class="truncate whitespace-nowrap text-overflow-ellipsis">descripcion del productofnkmvklmdfklvmkldfmvlkndklvkdvlknkvnkldfvlkdfmvkldfklnlkvknlfkndklvfldkvdlkkldfvlknfdklvnlkfln</p>
                 </a>
             </div>
-            <div  class="bg-red-500 gap-4 rounded-md">
-                <a href="" class="bg-red-500 gap-4" >
-                    <img src="" alt="Foto" class="h8">
-                    <p>Precio</p>
-                    <p>Name del producto</p>
-                    <p>descripcion del producto</p>
-                </a>
-            </div>
-            <div  class="bg-red-500 gap-4 rounded-md">
-                <a href="" class="bg-red-500 gap-4" >
-                    <img src="" alt="Foto" class="h8">
-                    <p>Precio</p>
-                    <p>Name del producto</p>
-                    <p>descripcion del producto</p>
-                </a>
-            </div>
-            <div  class="bg-red-500 gap-4 rounded-md">
-                <a href="" class="bg-red-500 gap-4" >
-                    <img src="" alt="Foto" class="h8">
-                    <p>Precio</p>
-                    <p>Name del producto</p>
-                    <p>descripcion del producto</p>
-                </a>
-            </div>
-            <div  class="bg-red-500 gap-4 rounded-md">
-                <a href="" class="bg-red-500 gap-4" >
-                    <img src="" alt="Foto" class="h8">
-                    <p>Precio</p>
-                    <p>Name del producto</p>
-                    <p>descripcion del producto</p>
-                </a>
-            </div>
-            
-        </div>
     </div>
     
     
