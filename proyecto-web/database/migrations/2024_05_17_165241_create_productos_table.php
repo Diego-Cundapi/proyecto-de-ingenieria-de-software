@@ -15,16 +15,16 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('categoria_id')->nullable();
-            $table->foreign('categoria_id')
+            $table->unsignedBigInteger('categories_id')->nullable();
+            $table->foreign('categories_id')
                   ->references('id')
                   ->on('categories')
                   ->onDelete('set null');
-            $table->string('nombre,45');
+            $table->string('nombre',45);
             $table->unsignedBigInteger('modelo');
-            $table->string('marca,20');
-            $table->decimal('precio,8,2');
-            $table->string('clave,20');
+            $table->string('marca',20);
+            $table->decimal('precio',8,2);
+            $table->string('clave',20);
             $table->string('descripcion',100);
             $table->string('imagen');
             $table->timestamps();

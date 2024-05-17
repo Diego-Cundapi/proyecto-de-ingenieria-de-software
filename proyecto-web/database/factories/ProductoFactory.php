@@ -18,13 +18,13 @@ class ProductoFactory extends Factory
     {
         return [
             //en los factories no ponemos llaves foraneas, solo en el seeder
-            'name' =>  fake()->word(),
+            'nombre' =>  fake()->word(),
             'descripcion' =>  fake()->sentence(),
-            'modelo' =>  fake()->sentence(),
+            'modelo' =>  fake()->numberBetween(1990, 2024),
             'marca' =>  fake()->word(),
             'clave' =>  fake()->word(),
-            'price' =>  fake()->randomFloat(2, 0, 9999),
-            'image' =>  fake()->imageUrl(),
+            'precio' =>  fake()->randomFloat(2, 0, 9999),
+            'imagen' =>  fake()->imageUrl(),
         ];
     }
 }
