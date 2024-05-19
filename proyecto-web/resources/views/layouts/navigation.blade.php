@@ -12,12 +12,11 @@
                         <div class="">
                             <img src="{{ asset('imagenes/logo.jpg') }}" class="h-10" alt="Logo">
                         </div>
-                            <div class="space-x-4 text-white/60 ">
-                                <a class="hover:text-white/90" href="">Home</a>
-                                <a href="" class="hover:text-white/90">Carrito</a>
-                                <a href="" class="hover:text-white/90">Iniciar sesión</a>
-                                <a href="" class="hover:text-white/90">Registrarse</a>
-                            </div>
+                        <div class="space-x-4 text-white/60 ">
+                            <a class="hover:text-white/90" href="">Home</a>
+                            <a href="" class="hover:text-white/90">Carrito</a>
+                            <a href="" class="hover:text-white/90">Iniciar sesión</a>
+                            <a href="" class="hover:text-white/90">Registrarse</a>
                         </div>
                     </div>
                 </header>
