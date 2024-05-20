@@ -39,6 +39,7 @@
                             <p>nombre: {{$producto->nombre}}</p>
                             <p>modelo: {{$producto->modelo}}</p>
                             <p>marca: {{$producto->marca}}</p>
+                            <p>categoria: {{$producto->categoria ? $producto->categoria->name : 'Sin categoría'}}</p>
                             <p class="line-clamp-2"> <!-- este estilo lo que hace es mostrar las dos primeras lineas de un texto y si es mayor a ese limite entonces pone "..." -->
                                 descripcion: {{$producto->descripcion}}
                             </p>

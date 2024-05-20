@@ -6,12 +6,14 @@ use App\Http\Controllers\PaginaController;
 use App\Http\Livewire\ShowPage;
 
 Route::get('/', \App\Http\Livewire\ShowPage::class)->name('index');
-Route::get('/login', function(){
-    return view('auth.login');
-})->name('login');
-Route::get('/register', function(){
-    return view('auth.register');
-})->name('register');
+
+// Route::get('/login', function(){
+//     return view('auth.login');
+// })->name('login');
+
+// Route::get('/register', function(){
+//     return view('auth.register');
+// })->name('register');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
