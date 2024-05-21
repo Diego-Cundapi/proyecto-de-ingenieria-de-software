@@ -13,7 +13,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
-    <body class="min-h-screen bg-gradient-to-r from-sky-400 to-violet-800">
+    <body class="min-h-screen bg-gradient-to-r from-slate-800 to-slate-900">
         <div class="">
             <!-- Page Heading  en caso de que este logeado-->
             @include('layouts/navigation')

@@ -7,17 +7,9 @@ use App\Http\Livewire\ShowPage;
 
 Route::get('/', \App\Http\Livewire\ShowPage::class)->name('index');
 
-// Route::get('/login', function(){
-//     return view('auth.login');
-// })->name('login');
-
-// Route::get('/register', function(){
-//     return view('auth.register');
-// })->name('register');
-
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified','can:dashboard'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
