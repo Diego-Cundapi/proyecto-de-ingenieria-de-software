@@ -18,6 +18,10 @@ class ShowPage extends Component
         $this->category = $category;
     }
 
+    public function updatingSearch(){
+        $this->resetPage();
+    }
+
     public function render()
     {
         $categories = Categories::get();

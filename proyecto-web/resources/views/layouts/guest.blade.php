@@ -12,7 +12,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
-    <body class="font-sans font-normal text-gray-900 antialiased bg-gradient-to-r from-sky-400 to-violet-800">
+    <body class="font-sans font-normal text-gray-900 antialiased bg-gradient-to-r from-slate-800 to-slate-900">
         @include('/layouts/navigation')
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 ">
             <div>

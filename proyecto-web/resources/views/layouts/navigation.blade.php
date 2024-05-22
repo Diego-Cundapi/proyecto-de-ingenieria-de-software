@@ -8,7 +8,12 @@
             <div class="space-x-4 text-white/60 ">
                 <span>Bienvenido {{auth()->user()->name}}</span>
                 <a class="hover:text-white/90" href="{{'/'}}">Home</a>
-                <a href="" class="hover:text-white/90">Carrito</a>
+                @role('cliente')
+                    <a href="#" class="hover:text-white/90">Carrito</a>
+                @endrole
+                @can('dashboard')
+                    <a href="{{route('dashboard')}}" class="hover:text-white/90">dashboard</a>
+                @endcan
                 <a href="{{route('logout')}}" class="hover:text-white/90">Cerrar sesión</a>
             </div>
         </div>

@@ -33,7 +33,12 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'), // hashear la contraseña
         ])->assignRole('admin');
 
-        \App\Models\User::factory(9)->create();
+        \App\Models\User::factory()
+        ->count(9)
+        ->create()
+        ->each(function ($user) {
+            $user->assignRole('cliente');
+        });
 
     }
 }
