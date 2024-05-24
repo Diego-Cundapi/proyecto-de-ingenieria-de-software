@@ -27,14 +27,14 @@
 
         <div class="w-full gap-4 grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 py-2">
             @forelse($productos as $producto)
-                <div  class="bg-slate-900 text-white via-blue-500 to-red-400 transform hover:scale-110 transition-transform duration-300 rounded-md p-2 h-48">
+                <div  class="bg-slate-900 text-white via-blue-500 to-red-400 transform hover:scale-110 transition-transform duration-300 rounded-md p-2 h-76">
                     <a href="" class="block bg-transparent gap-4 w-full h-full capitalize" >
                         <!-- Contenedor de la imagen -->
-                        <div>
-                            <img src="" alt="Foto" class="h8">
+                        <div class="">
+                            <img src="{{ $producto->imagen }}" alt="Foto" class="w-52 h-32 object-cover">
                         </div>
                         <!-- Contenedor de los detalles -->
-                        <div class="text-sm">
+                        <div class="text-xs">
                             <p class="">{{"$" . $producto->precio}}</p>
                             <p>nombre: {{$producto->nombre}}</p>
                             <p>modelo: {{$producto->modelo}}</p>
@@ -44,7 +44,7 @@
                                 descripcion: {{$producto->descripcion}}
                             </p>
                         </div>
-                        <input class="text-white/60 hover:text-white/90 flex justify-end" type="submit" value="comprar">
+                        <input class="text-white/60 hover:text-white/90 flex justify-end" type="submit" value="Agregar al carrito">
                     </a>
                 </div>
             @empty

@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('clave',20);
             $table->string('descripcion',100);
             $table->string('imagen');
+            $table->integer('disponible');
+
             $table->timestamps();
         });
     }
