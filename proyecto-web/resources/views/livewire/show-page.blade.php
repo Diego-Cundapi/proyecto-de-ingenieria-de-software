@@ -30,8 +30,8 @@
                 <div  class="bg-slate-900 text-white via-blue-500 to-red-400 transform hover:scale-110 transition-transform duration-300 rounded-md p-2 h-76">
                     <a href="" class="block bg-transparent gap-4 w-full h-full capitalize" >
                         <!-- Contenedor de la imagen -->
-                        <div class="">
-                            <img src="{{ $producto->imagen }}" alt="Foto" class="w-52 h-32 object-cover">
+                        <div class="-">
+                            <img src="{{ $producto->imagen }}" alt="Foto" class="w-52 h-32">
                         </div>
                         <!-- Contenedor de los detalles -->
                         <div class="text-xs">

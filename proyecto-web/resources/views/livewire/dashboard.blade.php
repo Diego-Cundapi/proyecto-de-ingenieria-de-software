@@ -10,7 +10,7 @@
     @section('content')
     <div class="flex justify-end">
         <div class="inline-block text-white bg-green-600 rounded-lg px-4 py-2 mx-2">
-            <a href="#" class="text-white">Nuevo Producto</a>
+            <a href="{{route('productos.create')}}" class="text-white">Nuevo Producto</a>
         </div>
     </div>
 
@@ -40,8 +40,8 @@
                             <td class="border border-slate-400 px-4 py-2">{{ $producto->precio }}</td>
                             <td class="border border-slate-400 px-4 py-2">{{ $producto->clave }}</td>
                             <td class="border border-slate-400 px-4 py-2">{{ $producto->descripcion }}</td>
-                            <td class="border border-slate-400 px-4 py-2">
-                                <img src="{{ $producto->imagen }}" alt="Imagen" class="w-32 h-24 object-cover">
+                            <td class="border border-slate-400 px-4 py-2 w-32 h-20">
+                                <img src="{{ asset($producto->imagen) }}" alt="Imagen">
                             </td>
                             <td class="border border-slate-400 px-4 py-2">{{ $producto->disponible }}</td>
                             <td class="border border-slate-400 px-4 py-2">
@@ -50,7 +50,7 @@
                                     <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Desea eliminar?')">Eliminar</button>
                                     </form>
                                 </div>
                                 

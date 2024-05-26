@@ -320,14 +320,8 @@ return [
             'can' => 'manage-blog',
         ],
         [
-            'text' => 'Dashboard',
-            'route' => 'dashboard',
-            'icon' => 'fas fa-fw fa-chart-line',
-            
-        ],
-        [
             'text' => 'Inventario',
-            'url' => '#',
+            'url' => 'dashboard',
             'icon' => 'fas fa-fw fa-clipboard-list',
         ],
         [

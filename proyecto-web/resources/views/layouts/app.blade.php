@@ -13,6 +13,23 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
+    @if(request()->routeIs('dashboard'))
+    <body class="min-h-screen bg-white">
+        <div class="">
+            <!-- Page Heading  en caso de que este logeado-->
+            @if(request()->routeIs('dashboard'))
+                <!-- no incluir el header -->
+            @else
+                @include('layouts/navigation')
+            @endif
+            <!-- Page Content -->
+            <main>
+                {{ $slot }}
+            </main>
+        </div>
+    @livewireScripts
+    </body>
+    @else
     <body class="min-h-screen bg-gradient-to-r from-slate-800 to-slate-900">
         <div class="">
             <!-- Page Heading  en caso de que este logeado-->
@@ -26,6 +43,8 @@
                 {{ $slot }}
             </main>
         </div>
-        @livewireScripts
+    @livewireScripts
     </body>
+    @endif
+    
 </html>
