@@ -14,9 +14,11 @@
             {{ session('success') }}
         </div>
     @endif
+
+    <div>
     <div class="flex justify-between">
         <div class="inline-block text-white bg-green-600 rounded-lg px-4 py-2 mx-2 space-x-4 hover:bg-green-800">
-            <a href="#" class="text-white ">Nueva categoria</a>
+            <a href="{{route('categoria.create')}}" class="text-white ">Nueva categoria</a>
         </div>
         <div class="bg-green-600 rounded-lg px-4 py-2 mx-2 hover:bg-green-800">
             <a href="{{route('productos.create')}}" class="text-white  ">Nuevo Producto</a>
@@ -73,6 +75,8 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    
     @stop
 
     @section('preloader')

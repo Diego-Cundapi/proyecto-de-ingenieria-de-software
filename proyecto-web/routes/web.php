@@ -5,12 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CarritoController;
+use \App\Http\Controller\CategoriaController;
 use App\Http\Livewire\ShowPage;
-use App\Http\Livewire\Inventario;
-use App\Http\Livewire\InventarioModal;
 
 
 Route::get('/', \App\Http\Livewire\ShowPage::class)->name('index');
+
+Route::resource('/dashboard/categoria', \App\Http\Controllers\CategoriaController::class)->middleware(['auth', 'verified','can:dashboard'])->names('categoria');
 
 //ruta para entrar al dashboard
 Route::get('/dashboard', \App\Http\Livewire\Dashboard::class)->middleware(['auth', 'verified','can:dashboard'])->name('dashboard');

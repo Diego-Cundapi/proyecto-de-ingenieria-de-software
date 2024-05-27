@@ -13,7 +13,7 @@
         {{ session('success') }}
     </div>
 @endif
-<div class="col-sm-8">
+<div class="col-sm-8 ">
     <h1 class="mt-3 mb-3 fs-4">Seccion de Ventas</h1>
     <table class="table table-bordered w-full">
         <tr>
@@ -37,7 +37,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="6">No hay pedidos</td>
+                <td colspan="6">No hay ventas</td>
             </tr>
         @endforelse
     </table>

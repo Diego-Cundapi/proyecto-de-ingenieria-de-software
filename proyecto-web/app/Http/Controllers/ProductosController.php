@@ -42,15 +42,15 @@ class ProductosController extends Controller
 
         // dd($request);
         $validatedData = $request->validate([
-            'nombre' => 'required|string|max:45',
+            'nombre' => 'required|string|max:45|regex:/^[a-zA-Z\s]+$/',
             'categories_id' => 'required|exists:categories,id',
             'modelo' => 'required|integer',
             'marca' => 'required|string|max:20',
-            'precio' => 'required|numeric',
+            'precio' => 'required|numeric|min:0',
             'clave' => 'required|string|max:20',
             'descripcion' => 'required|string|max:100',
             'imagen' => 'required|image|mimes:jpg,jpeg,png|max:2048', // max 2MB
-            'disponible' => 'required|integer',
+            'disponible' => 'required|integer|min:0',
         ]);
 
         if ($request->hasFile('imagen')) {
@@ -111,15 +111,15 @@ class ProductosController extends Controller
     {
         // Validar los datos recibidos
         $validatedData = $request->validate([
-            'nombre' => 'required|string|max:45',
+            'nombre' => 'required|string|max:45|regex:/^[a-zA-Z\s]+$/',
             'categories_id' => 'required|exists:categories,id',
             'modelo' => 'required|integer',
             'marca' => 'required|string|max:20',
-            'precio' => 'required|numeric',
+            'precio' => 'required|numeric|min:0',
             'clave' => 'required|string|max:20',
             'descripcion' => 'required|string|max:100',
-            'imagen' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', 
-            'disponible' => 'required|integer',
+            'imagen' => 'required|image|mimes:jpg,jpeg,png|max:2048', // max 2MB
+            'disponible' => 'required|integer|min:0',
         ]);
 
         // Manejo de la imagen

@@ -14,7 +14,7 @@ class Dashboard extends Component
     }
     public function render()
     {
-        $productos = Producto::get();
+        $productos = Producto::orderByDesc('updated_at')->get();
         return view('livewire.dashboard',['productos' => $productos]);
     }
 }

@@ -24,7 +24,13 @@
                     {!! Form::open(['route'=>['ventas.update', $pedido], 'method'=>'PUT']) !!}
                     <div class="row">
                         <div class="col-6">
-                            {!! Form::select('estado', ["nuevo"=>"Nuevo", "proceso"=>"Proceso", "entregado"=>"Entregado"], $pedido->estado, ['class'=>'form-control', 'required']) !!}
+                            @php
+                            $estadosDisponibles=["Nuevo"=>"Nuevo", "Proceso"=>"Proceso", "Entregado"=>"Entregado"];
+                            @endphp
+
+                            {!! Form::select('estado', $estadosDisponibles, $pedido->estado, ['class'=>'form-control', 'required']) !!}
+                        
+
                         </div>
                         <div class="col-6">
                             {!! Form::submit('ACTUALIZAR', ['class'=>'btn btn-success w-100']) !!}
