@@ -1,7 +1,6 @@
 @extends('productos._templateForm')
 
 @section('content')
-{{$errors}}
 <div class="flex justify-center py-4 px-4 bg-slate-200 rounded-md" style="width:50%; margin-left:25%;">
     <form action="{{route('productos.store')}}" enctype="multipart/form-data" method="POST">
         @csrf

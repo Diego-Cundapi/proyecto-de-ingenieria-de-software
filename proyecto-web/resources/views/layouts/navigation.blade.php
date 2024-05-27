@@ -9,7 +9,7 @@
                 <span>Bienvenido {{auth()->user()->name}}</span>
                 <a class="hover:text-white/90" href="{{'/'}}">Home</a>
                 @role('cliente')
-                    <a href="#" class="hover:text-white/90">Carrito</a>
+                    <a href="{{route('carrito.index')}}" class="hover:text-white/90">Carrito</a>
                 @endrole
                 @can('dashboard')
                     <a href="{{route('dashboard')}}" class="hover:text-white/90">dashboard</a>
@@ -27,7 +27,7 @@
             </div>
                 <div class="space-x-4 text-white/60 ">
                     <a class="hover:text-white/90" href="{{'/'}}">Home</a>
-                    <a href="" class="hover:text-white/90">Carrito</a>
+                    <a href="{{route('carrito.index')}}" class="hover:text-white/90">Carrito</a>
                     <a href="{{route('login')}}" class="hover:text-white/90">Iniciar sesión</a>
                     <a href="{{route('register')}}" class="hover:text-white/90">Registrarse</a>
                 </div>

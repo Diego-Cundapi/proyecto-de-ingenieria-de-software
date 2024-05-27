@@ -1,4 +1,11 @@
-<div class="max-w-7xl font-sans font-normal mx-auto px-4 sm:px-6 lg:px-8 flex gap-10 py-12">
+<div class="max-w-7xl font-sans font-normal mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10 py-12">
+    @if (session('success'))
+        <div class="bg-green-500 text-white p-4 text-center rounded w-full">
+            <p>{{ session('success') }}</p>
+        </div>
+    @endif
+
+    <div class="flex gap-10">
     <div class=" w-64">
         <ul class="flex py-15">
             <li class="rounded-md items-center justify-center mb-4 w-full">
@@ -44,7 +51,11 @@
                                 descripcion: {{$producto->descripcion}}
                             </p>
                         </div>
-                        <input class="text-white/60 hover:text-white/90 flex justify-end" type="submit" value="Agregar al carrito">
+                        <form action="{{route('carrito.agregarproducto')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="producto_id" value="{{$producto->id}}">
+                            <input class="text-white/60 hover:text-white/90 flex justify-end" type="submit" value="Agregar al carrito">
+                        </form>
                     </a>
                 </div>
             @empty
@@ -52,4 +63,6 @@
             @endforelse
     </div>
     {{ $productos->links() }}
+    </div>
+    
 </div>

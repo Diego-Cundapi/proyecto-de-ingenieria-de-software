@@ -8,9 +8,18 @@
     @stop
 
     @section('content')
-    <div class="flex justify-end">
-        <div class="inline-block text-white bg-green-600 rounded-lg px-4 py-2 mx-2">
-            <a href="{{route('productos.create')}}" class="text-white">Nuevo Producto</a>
+
+    @if(session('success'))
+        <div class="bg-green-200 text-green-700 py-2 px-4 rounded-md mb-4 flex justify-center">
+            {{ session('success') }}
+        </div>
+    @endif
+    <div class="flex justify-between">
+        <div class="inline-block text-white bg-green-600 rounded-lg px-4 py-2 mx-2 space-x-4 hover:bg-green-800">
+            <a href="#" class="text-white ">Nueva categoria</a>
+        </div>
+        <div class="bg-green-600 rounded-lg px-4 py-2 mx-2 hover:bg-green-800">
+            <a href="{{route('productos.create')}}" class="text-white  ">Nuevo Producto</a>
         </div>
     </div>
 
