@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'direccion' => fake()->address(),
             'ciudad' => fake()->city(),
             'estado' => fake()->state(),
-            'codigo_postal' => fake()->postcode(),
+            'codigo_postal' =>  fake()->numerify('#####'),
             'remember_token' => Str::random(10),
         ];
     }

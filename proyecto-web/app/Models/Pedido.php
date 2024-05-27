@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'subtotal',
+        'impuesto',
+        'total',
+        'fechapedido',
+        'estado',
+        'user_id',
+    ];
+
+    public function detalles(){
+        return $this->hasMany(Detalle::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Cart;
 use App\Models\Producto;
+use App\Models\Pedido;
+use App\Models\Detalle;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CarritoController extends Controller
 {
@@ -53,5 +56,30 @@ class CarritoController extends Controller
     public function eliminarCarrito(){
         Cart::destroy();
         return redirect()->route('index')->with('success','Carrito Vacio');
+    }
+
+    public function confirmarCarrito(){
+        //dd(Cart::subtotal());
+        $pedido = new Pedido();
+        $pedido->subtotal = floatval(str_replace(',', '', Cart::subtotal()));
+        $pedido->impuesto = floatval(str_replace(',', '', Cart::tax()));
+        $pedido->total = floatval(str_replace(',', '', Cart::total()));
+        $pedido->fechapedido = Carbon::now();
+        $pedido->estado = "nuevo"; 
+        $pedido->user_id= auth()->user()->id;
+        $pedido->save();
+
+        foreach(Cart::content() as $item){
+            $detalle = new Detalle();
+            $detalle->precio = $item->price;
+            $detalle->importe = $item->price * $item->qty;
+            $detalle->cantidad = $item->qty;
+            $detalle->pedido_id = $pedido->id;
+            $detalle->producto_id = $item->id;
+            $detalle->save();
+        }
+
+        Cart::destroy();
+        return redirect()->route('index')->with('success','Pedido realizado correctamente');
     }
 }

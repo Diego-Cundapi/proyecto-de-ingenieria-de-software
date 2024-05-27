@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->decimal('subtotal',8,2);
+            $table->decimal('impuesto',8,2);
+            $table->decimal('total',8,2);
+            $table->datetime('fechapedido');
+            $table->enum('estado',["Nuevo","Proceso","Entregado"])->default("Nuevo");
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

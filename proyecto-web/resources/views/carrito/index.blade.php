@@ -62,7 +62,7 @@
     <div class="row justify-content-center mt-5 mb-5 text-center">
         <a href="{{ route('index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Seguir Comprando</a>
         @auth
-            <a href="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Realizar compra</a>
+            <a href="{{route('carrito.confirmarcarrito')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Realizar compra</a>
         @endauth
         <a href="{{ route('carrito.eliminarcarrito') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Limpiar carrito</a>
     </div>

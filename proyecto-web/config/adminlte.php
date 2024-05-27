@@ -326,7 +326,7 @@ return [
         ],
         [
             'text' => 'Ventas',
-            'url' => '#',
+            'url' => '/dashboard/ventas',
             'icon' => 'fas fa-fw fa-dollar-sign',
         ],
         // [
