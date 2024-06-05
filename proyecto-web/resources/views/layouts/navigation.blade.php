@@ -1,38 +1,44 @@
 <div>
 @if (auth()->check())
-    <header class="bg-black/80 shadow text-white">
-        <div class="flex items-center justify-between max-w-7xl mx-auto px-1">
-            <div class="">
+    <header class="bg-gray-900 text-white py-4 px-6 md:px-8 flex items-center justify-between">
+        <div class="text-2xl font-bold">
+            <a href="">Autopartes ALA</a>
+        </div>
+            <!-- <div class="">
                 <img src="{{ asset('imagenes/logo.jpg') }}" class="h-10" alt="Logo">
-            </div>
-            <div class="space-x-4 text-white/60">
-                <span>Bienvenido {{auth()->user()->name}}</span>
-                <a class="hover:text-white/90" href="{{'/'}}">Home</a>
-                @role('cliente')
-                    <a href="{{route('carrito.index')}}" class="hover:text-white/90">Carrito</a>
-                @endrole
+            </div> -->
+            <div class="flex items-center space-x-4">
+                <a class="hover:text-white/40" href="{{'/'}}">Home</a>
                 @can('dashboard')
-                    <a href="{{route('dashboard')}}" class="hover:text-white/90">dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="bg-black py-2 px-4 text-base rounded-md hover:text-blue-500">
+                    <i class="fas fa-tachometer-alt"></i>Dashboard
+                    </a>
                 @endcan
+                @role('cliente')
+                    <a href="{{route('carrito.index')}}" class="hover:text-white/40">
+                    <i class="fa-solid fa-cart-shopping text-2xl"></i></a>
+                @endrole
                 <a href="{{route('logout')}}" class="hover:text-white/90">Cerrar sesión</a>
             </div>
-        </div>
     </header>
-
 @else
-    <header class="bg-black/80 shadow font-semibold">
-        <div class="flex items-center justify-between max-w-7xl mx-auto px-1">
-            <div class="">
-                <img src="{{ asset('imagenes/logo.jpg') }}" class="h-10" alt="Logo">
-            </div>
-                <div class="space-x-4 text-white/60 ">
-                    <a class="hover:text-white/90" href="{{'/'}}">Home</a>
-                    <a href="{{route('carrito.index')}}" class="hover:text-white/90">Carrito</a>
-                    <a href="{{route('login')}}" class="hover:text-white/90">Iniciar sesión</a>
-                    <a href="{{route('register')}}" class="hover:text-white/90">Registrarse</a>
-                </div>
-            </div>
+    <header class="bg-gray-900 text-white py-4 px-6 md:px-8 flex items-center justify-between">
+
+        <div class="text-2xl font-bold">
+            <a href="">Autopartes ALA</a>
         </div>
+            <!-- <div class="">
+                <img src="{{ asset('imagenes/logo.jpg') }}" class="h-10" alt="Logo">
+            </div> -->
+                <div class="flex items-center space-x-4">
+                    <a class="hover:text-white/40" href="{{'/'}}">Home</a>
+                    <a href="{{ route('login') }}" class="bg-black py-2 px-4 text-base rounded-md hover:text-blue-500">
+                    <i class="fa-solid fa-user" style="margin-right: 0.5rem;"></i>Iniciar sesión
+                    </a>
+
+                    <a href="{{route('carrito.index')}}" class="hover:text-white/40">
+                    <i class="fa-solid fa-cart-shopping text-2xl"></i></a>
+                </div>
     </header>
 @endif
 

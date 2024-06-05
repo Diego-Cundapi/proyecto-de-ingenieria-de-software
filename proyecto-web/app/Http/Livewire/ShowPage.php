@@ -12,6 +12,14 @@ class ShowPage extends Component
 
     public $category = '';
     public $search = '';
+    public $producto;
+
+    public function mount($producto = null)
+    {
+        if ($producto) {
+            $this->producto = Producto::find($producto);
+        }
+    }
 
     public function filterByCategory($category)
     {
@@ -24,6 +32,10 @@ class ShowPage extends Component
 
     public function render()
     {
+        if ($this->producto) {
+            return view('livewire.mostrar', ['productoMostrar' => $this->producto]);
+        }
+
         $categories = Categories::orderBy('name', 'asc')->get();
 
         $productos = Producto::query();

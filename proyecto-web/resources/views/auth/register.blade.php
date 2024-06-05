@@ -1,78 +1,74 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+    <div class="mx-auto max-w-md space-y-6">
+        <div class="space-y-2 text-center">
+            <h1 class="text-3xl font-bold">Registro</h1>
+            <p class="text-gray-500 dark:text-gray-400">Completa los siguientes campos para crear una cuenta.</p>
         </div>
+        <form method="POST" action="{{ route('register') }}" class="space-y-4">
+            @csrf
 
-        <!-- Telefono -->
-        <div class="mt-4">
-            <x-input-label for="telefono" :value="__('Telefono')" />
-            <x-text-input id="telefono" class="block mt-1 w-full" type="text" name="telefono" :value="old('telefono')" required />
-            <x-input-error :messages="$errors->get('telefono')" class="mt-2" />
-        </div>
-
-        <!-- Direccion -->
-        <div class="mt-4">
-            <x-input-label for="direccion" :value="__('Direccion')" />
-            <x-text-input id="direccion" class="block mt-1 w-full" type="text" name="direccion" :value="old('direccion')" required />
-            <x-input-error :messages="$errors->get('direccion')" class="mt-2" />
-        </div>
-
-        <!-- Ciudad -->
-        <div class="mt-4">
-            <x-input-label for="ciudad" :value="__('Ciudad')" />
-            <x-text-input id="ciudad" class="block mt-1 w-full" type="text" name="ciudad" :value="old('ciudad')" required />
-            <x-input-error :messages="$errors->get('ciudad')" class="mt-2" />
-        </div>
-
-        <!-- Estado -->
-        <div class="mt-4">
-            <x-input-label for="estado" :value="__('Estado')" />
-            <x-text-input id="estado" class="block mt-1 w-full" type="text" name="estado" :value="old('estado')" required />
-            <x-input-error :messages="$errors->get('estado')" class="mt-2" />
-        </div>
-
-        <!-- Codigo Postal -->
-        <div class="mt-4">
-            <x-input-label for="codigo_postal" :value="__('Codigo Postal')" />
-            <x-text-input id="codigo_postal" class="block mt-1 w-full" type="text" name="codigo_postal" :value="old('codigo_postal')" required />
-            <x-input-error :messages="$errors->get('codigo_postal')" class="mt-2" />
-        </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-2">
+                    <label for="name" class="block">Nombre</label>
+                    <input id="name" name="name" type="text" placeholder="Ingresa tu nombre" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required value="{{ old('name') }}" />
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
+                <div class="space-y-2">
+                    <label for="telefono" class="block">Teléfono</label>
+                    <input id="telefono" name="telefono" type="tel" placeholder="Ingresa tu teléfono" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required value="{{ old('telefono') }}" />
+                    <x-input-error :messages="$errors->get('telefono')" class="mt-2" />
+                </div>
+            </div>
+            <div class="space-y-2">
+                <label for="direccion" class="block">Dirección</label>
+                <input id="direccion" name="direccion" type="text" placeholder="Ingresa tu dirección" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required value="{{ old('direccion') }}" />
+                <x-input-error :messages="$errors->get('direccion')" class="mt-2" />
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="space-y-2">
+                    <label for="ciudad" class="block">Ciudad</label>
+                    <input id="ciudad" name="ciudad" type="text" placeholder="Ingresa tu ciudad" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required value="{{ old('ciudad') }}" />
+                    <x-input-error :messages="$errors->get('ciudad')" class="mt-2" />
+                </div>
+                <div class="space-y-2">
+                    <label for="estado" class="block">Estado</label>
+                    <input id="estado" name="estado" type="text" placeholder="Ingresa tu estado" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required value="{{ old('estado') }}" />
+                    <x-input-error :messages="$errors->get('estado')" class="mt-2" />
+                </div>
+                <div class="space-y-2">
+                    <label for="codigo_postal" class="block">Código Postal</label>
+                    <input id="codigo_postal" name="codigo_postal" type="text" placeholder="Ingresa tu código postal" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required value="{{ old('codigo_postal') }}" />
+                    <x-input-error :messages="$errors->get('codigo_postal')" class="mt-2" />
+                </div>
+            </div>
+            <div class="space-y-2">
+                <label for="email" class="block">Correo Electrónico</label>
+                <input id="email" name="email" type="email" placeholder="Ingresa tu correo electrónico" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required value="{{ old('email') }}" />
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-2">
+                    <label for="password" class="block">Contraseña</label>
+                    <input id="password" name="password" type="password" placeholder="Ingresa tu contraseña" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required />
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+                <div class="space-y-2">
+                    <label for="password_confirmation" class="block">Confirmar Contraseña</label>
+                    <input id="password_confirmation" name="password_confirmation" type="password" placeholder="Confirma tu contraseña" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" required />
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-end mt-4">
+                <button type="submit" class="w-full mb-3 justify-center text-white bg-black py-2 px-4 rounded-md hover:bg-slate-900">
+                    Registrarse
+                </button>
+                <div class="text-center text-sm">
+                    ¿Ya tienes cuenta? 
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+                        Inicia sesión aquí.
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
 </x-guest-layout>

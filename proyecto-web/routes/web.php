@@ -13,6 +13,8 @@ Route::get('/', \App\Http\Livewire\ShowPage::class)->name('index');
 
 Route::resource('/dashboard/categoria', \App\Http\Controllers\CategoriaController::class)->middleware(['auth', 'verified','can:dashboard'])->names('categoria');
 
+Route::get('/productos/{producto?}', ShowPage::class)->name('producto');
+
 //ruta para entrar al dashboard
 Route::get('/dashboard', \App\Http\Livewire\Dashboard::class)->middleware(['auth', 'verified','can:dashboard'])->name('dashboard');
 

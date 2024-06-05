@@ -10,6 +10,18 @@
         </div>
     @endif
 
+    <section class="text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Encuentre las piezas de automóvil perfectas</h1>
+                <p class="text-lg mb-8">Mejora tu viaje con nuestras piezas y accesorios para automóviles de alta calidad.</p>
+            </div>
+            <div>
+                <img src="{{ asset('imagenes/logo.png') }}" alt="Car" class="rounded-lg shadow-lg" />
+            </div>
+        </div>
+    </section>
+    
     <div class="flex gap-10">
         <div class=" w-64">
             <ul class="flex py-15">
@@ -34,42 +46,40 @@
 
         <div class ="w-full bg-slate-800 rounded-md min-h-screen">
             <form class="mb-4 py-2 flex justify-center" action="">
-                <input wire:model="search" type="text" placeholder="Buscar 2" class="w-1/2 bg-slate-400 text-xs rounded-md">
+                <input wire:model="search" type="text" placeholder="Buscar" class="w-1/2 bg-slate-400 text-xs rounded-md">
             </form>
 
-            <div class="w-full gap-4 grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 py-2">
-                @forelse($productos as $producto)
-                    <div  class="bg-slate-900 text-white via-blue-500 to-red-400 transform hover:scale-110 transition-transform duration-900 rounded-md p-2 h-76">
-                        <a href="" class="block bg-transparent gap-4 w-full h-full capitalize" >
-                            <!-- Contenedor de la imagen -->
-                            <div >
-                                <img class="rounded-md" src="{{ $producto->imagen }}" alt="Foto" class="w-52 h-32">
-                            </div>
-                            <!-- Contenedor de los detalles -->
-                            <div class="text-xs">
-                                <p class="">{{"$" . $producto->precio}}</p>
-                                <p>nombre: {{$producto->nombre}}</p>
-                                <p>modelo: {{$producto->modelo}}</p>
-                                <p>marca: {{$producto->marca}}</p>
-                                <p>Disponible: {{$producto->disponible}}</p>
-                                <p>categoria: {{$producto->categoria ? $producto->categoria->name : 'Sin categoría'}}</p>
-                                <p class="line-clamp-2"> <!-- este estilo lo que hace es mostrar las dos primeras lineas de un texto y si es mayor a ese limite entonces pone "..." -->
-                                    descripcion: {{$producto->descripcion}}
-                                </p>
-                            </div>
-                            <form action="{{route('carrito.agregarproducto')}}" class="text-center" method="POST">
-                                @csrf
-                                <input type="hidden" name="producto_id" value="{{$producto->id}}">
-                                <input class="text-white/60 hover:text-white text-center" type="submit" value="Agregar al carrito">
-                            </form>
-                        </a>
+            <section class="py-4">
+                <div class="container mx-auto px-4 md:px-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+                        @foreach($productos as $producto)
+                        <div class="bg-white rounded-lg shadow-lg transform hover:scale-110 transition-transform duration-900">
+                            <a href="{{ route('producto', $producto->id) }}">
+                                <img src="{{ $producto->imagen }}" alt="Product" class="rounded-t-lg" style="width: 400px; height: 300px;">
+                                <div class="p-4">
+                                    <h3 class="text-lg font-medium mb-2">{{$producto->nombre}}</h3>
+                                    <p class="text-gray-500 mb-4 line-clamp-1">{{$producto->descripcion}}</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xl font-bold">${{$producto->precio}}</span>
+                                        <form action="{{route('carrito.agregarproducto')}}" class="text-center text-black" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="producto_id" value="{{$producto->id}}">
+                                            <input class="px-4 py-2 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-indigo-600" type="submit" value="Agregar al carrito">
+                                        </form>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                        </div>
+                        @endforeach
                     </div>
-                @empty
-                    <p>no hay productos</p>
-                @endforelse
+                </div>
+            </section>
         </div>
+
         {{ $productos->links() }}
     </div>
     
 </div>
+
 
