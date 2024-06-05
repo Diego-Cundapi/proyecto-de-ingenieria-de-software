@@ -4,7 +4,7 @@
     @section('title', 'Dashboard')
 
     @section('content_header')
-        <h1>Panel de administración</h1>
+        <h1 class="">Panel de Administración</h1>
     @stop
 
     @section('content')
@@ -16,19 +16,19 @@
     @endif
 
     <div>
-    <div class="flex justify-between">
-        <div class="inline-block text-white bg-green-600 rounded-lg px-4 py-2 mx-2 space-x-4 hover:bg-green-800">
-            <a href="{{route('categoria.create')}}" class="text-white ">Nueva categoria</a>
+        <div class="flex justify-between">
+            <div class="inline-block text-white bg-green-600 rounded-lg px-4 py-2 mx-2 space-x-4 hover:bg-green-800">
+                <a href="{{route('categoria.create')}}" class="text-white ">Nueva categoria</a>
+            </div>
+            <div class="bg-green-600 rounded-lg px-4 py-2 mx-2 hover:bg-green-800">
+                <a href="{{route('productos.create')}}" class="text-white  ">Nuevo Producto</a>
+            </div>
         </div>
-        <div class="bg-green-600 rounded-lg px-4 py-2 mx-2 hover:bg-green-800">
-            <a href="{{route('productos.create')}}" class="text-white  ">Nuevo Producto</a>
-        </div>
-    </div>
 
         <div class="px-2 py-2">
             <table class="table">
                 <thead>
-                    <tr>
+                    <tr> 
                         <th class="border border-slate-400 px-4 py-2">Categoría</th>
                         <th class="border border-slate-400 px-4 py-2">Nombre</th>
                         <th class="border border-slate-400 px-4 py-2">Modelo</th>
@@ -90,6 +90,5 @@
     @stop
 
     @section('js')
-        <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
     @stop
 </div>

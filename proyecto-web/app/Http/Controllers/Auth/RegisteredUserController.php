@@ -34,12 +34,16 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'telefono' => ['required', 'numeric', 'digits_between:10,15'],
+            'telefono' => ['required', 'numeric', 'digits:10','regex:/^[0-9]+$/'],
             'direccion' => ['required', 'string', 'max:255'],
             'ciudad' => ['required', 'string', 'max:255'],
             'estado' => ['required', 'string', 'max:255'],
-            'codigo_postal' => ['required', 'string', 'max:10'],
+            'codigo_postal' => ['required', 'digits:5', 'max:5'],
+        ],[
+            'telefono.regex' => 'No aceptamos números negativos o positivos en el campo de teléfono.',
         ]);
+
+        
 
         $user = User::create([
             'name' => $request->name,

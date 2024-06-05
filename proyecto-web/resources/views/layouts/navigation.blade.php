@@ -5,7 +5,7 @@
             <div class="">
                 <img src="{{ asset('imagenes/logo.jpg') }}" class="h-10" alt="Logo">
             </div>
-            <div class="space-x-4 text-white/60 ">
+            <div class="space-x-4 text-white/60">
                 <span>Bienvenido {{auth()->user()->name}}</span>
                 <a class="hover:text-white/90" href="{{'/'}}">Home</a>
                 @role('cliente')

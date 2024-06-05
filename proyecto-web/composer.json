@@ -18,6 +18,7 @@
         "wire-elements/modal": "^1.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.13",
         "fakerphp/faker": "^1.9.1",
         "laravel-lang/common": "^2.0",
         "laravel/breeze": "^1.19",

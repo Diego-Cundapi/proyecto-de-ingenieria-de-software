@@ -24,7 +24,7 @@ class ShowPage extends Component
 
     public function render()
     {
-        $categories = Categories::get();
+        $categories = Categories::orderBy('name', 'asc')->get();
 
         $productos = Producto::query();
 
@@ -36,7 +36,7 @@ class ShowPage extends Component
             $productos->where('categories_id', $this->category);
         }
 
-        $productos = $productos->latest()->paginate(12);
+        $productos = $productos->with('categoria')->latest()->paginate(12);
 
         return view('livewire.show-page', [
             'categories' => $categories,

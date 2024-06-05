@@ -321,7 +321,7 @@ return [
         ],
         [
             'text' => 'Inventario',
-            'url' => 'dashboard',
+            'route' => 'dashboard',
             'icon' => 'fas fa-fw fa-clipboard-list',
         ],
         [

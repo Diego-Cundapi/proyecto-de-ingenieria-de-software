@@ -26,7 +26,7 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        $categorias = Categories::all(); // Obtén todas las categorías
+        $categorias = Categories::orderBy('name')->get(); // Obtén todas las categorías
         return view('productos.create', compact('categorias'));
     }
 
@@ -75,18 +75,6 @@ class ProductosController extends Controller
         }
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -96,7 +84,7 @@ class ProductosController extends Controller
     public function edit($id)
     {
         $producto = Producto::find($id);
-        $categorias = Categories::all();
+        $categorias = Categories::orderBy('name')->get();
         return view('productos.edit', compact('producto','categorias'));
     }
 
@@ -114,31 +102,32 @@ class ProductosController extends Controller
             'nombre' => 'required|string|max:45|regex:/^[a-zA-Z\s]+$/',
             'categories_id' => 'required|exists:categories,id',
             'modelo' => 'required|integer',
-            'marca' => 'required|string|max:20',
+            'marca' => 'required|string|max:20|regex:/^[a-zA-Z]+$/',
             'precio' => 'required|numeric|min:0',
             'clave' => 'required|string|max:20',
             'descripcion' => 'required|string|max:100',
-            'imagen' => 'required|image|mimes:jpg,jpeg,png|max:2048', // max 2MB
+            'imagen' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // max 2MB
             'disponible' => 'required|integer|min:0',
         ]);
 
         // Manejo de la imagen
         if ($request->hasFile('imagen')) {
-            // Eliminar la imagen anterior si existe
-            if ($producto->imagen && Storage::exists($producto->imagen)) {
-                Storage::delete($producto->imagen);
-            }
-
             // Almacenar la nueva imagen y obtener la ruta
             $image = $request->file('imagen');
             $imageName = time() . '-' . $image->getClientOriginalName();
             $image->move(public_path('imagenes/productos'), $imageName);
             $imagePath = 'imagenes/productos/' . $imageName;
 
+            if ($producto->imagen && file_exists(public_path($producto->imagen))) {
+                unlink(public_path($producto->imagen));
+            }
+    
             // Actualizar la ruta de la imagen en los datos validados
             $validatedData['imagen'] = $imagePath;
+        } else {
+            // Mantener la ruta de la imagen existente
+            $validatedData['imagen'] = $producto->imagen;
         }
-
         // Actualizar el producto con los datos validados
         $producto->update($validatedData);
 

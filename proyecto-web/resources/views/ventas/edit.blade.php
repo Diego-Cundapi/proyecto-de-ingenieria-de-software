@@ -75,7 +75,8 @@
                     </tr>
                 @endforelse
 
-                <tr><td colspan="3" class="text-end">SubTotal: </td>
+                <tr>
+                    <td colspan="3" class="text-end">SubTotal: </td>
                     <td>{{$pedido->subtotal}}</td>
                 </tr>
                 <tr><td colspan="3" class="text-end">Impuesto: </td>

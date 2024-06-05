@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                @foreach(Cart::content() as $item)
+                @forelse(Cart::content() as $item)
                     <tr class="">
                         <td class="py-2 px-4 border-b border-gray-300">
                             <img src="{{asset($item->options->imagen)}}" alt="Imagen del producto" class="mx-auto w-16 h-16 object-cover">
@@ -42,7 +42,14 @@
                             <a href="{{route('carrito.eliminaritem',$item->rowId)}}" class="py-2 px-4 bg-red-500 rounded-md hover:text-white hover:bg-red-900">Remover</a>
                         </td>
                     </tr>
-                @endforeach
+
+                @empty
+                <tr>
+                    <td class="py-2 px-4 border-gray-300" colspan="6">Carrito vacío</td>
+                </tr>
+                @endforelse
+
+                @if(Cart::count()>=1)
                 <tr>
                     <td colspan="4" class="text-end font-bold py-2 px-4">Subtotal:</td>
                     <td class="text-center py-2 px-4">${{Cart::subtotal()}}</td>
@@ -55,16 +62,20 @@
                     <td colspan="4" class="text-end font-bold py-2 px-4">Total:</td>
                     <td class="text-center py-2 px-4">${{Cart::total()}}</td>
                 </tr>
+                @endif
             </tbody>
         </table>
     </div>
 
     <div class="row justify-content-center mt-5 mb-5 text-center">
         <a href="{{ route('index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Seguir Comprando</a>
-        @auth
-            <a href="{{route('carrito.confirmarcarrito')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Realizar compra</a>
-        @endauth
-        <a href="{{ route('carrito.eliminarcarrito') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Limpiar carrito</a>
+        @if(Cart::count()>=1)
+            @auth
+                <a href="{{route('carrito.confirmarcarrito')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Realizar compra</a>
+                <a href="{{ route('carrito.eliminarcarrito') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Limpiar carrito</a>
+            @endauth
+        @endif
+        
     </div>
 </div>
 @endsection
