@@ -53,33 +53,49 @@
                 <div class="container mx-auto px-4 md:px-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                         @foreach($productos as $producto)
-                        <div class="bg-white rounded-lg shadow-lg transform hover:scale-110 transition-transform duration-900">
-                            <a href="{{ route('producto', $producto->id) }}">
-                                <img src="{{ $producto->imagen }}" alt="Product" class="rounded-t-lg" style="width: 400px; height: 300px;">
-                                <div class="p-4">
-                                    <h3 class="text-lg font-medium mb-2">{{$producto->nombre}}</h3>
-                                    <p class="text-gray-500 mb-4 line-clamp-1">{{$producto->descripcion}}</p>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-xl font-bold">${{$producto->precio}}</span>
-                                        <form action="{{route('carrito.agregarproducto')}}" class="text-center text-black" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="producto_id" value="{{$producto->id}}">
-                                            <input class="px-4 py-2 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-indigo-600" type="submit" value="Agregar al carrito">
-                                        </form>
+                            @if($producto->disponible > 0)
+                            <div class="bg-white rounded-lg shadow-lg transform hover:scale-110 transition-transform duration-900">
+                                <a href="{{ route('producto', $producto->id) }}">
+                                    <img src="{{ $producto->imagen }}" alt="Product" class="rounded-t-lg" style="width: 400px; height: 300px;">
+                                    <div class="p-4">
+                                        <h3 class="text-lg font-medium mb-2">{{$producto->nombre}}</h3>
+                                        <p class="text-gray-500 mb-4 line-clamp-1">{{$producto->descripcion}}</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xl font-bold">${{$producto->precio}}</span>
+                                            
+                                            <form action="{{route('carrito.agregarproducto')}}" class="text-center text-black" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="producto_id" value="{{$producto->id}}">
+                                                <input class="px-4 py-2 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-indigo-600" type="submit" value="Agregar al carrito">
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            
-                        </div>
+                                </a>
+                            </div>
+                            @else
+                            <!-- <div class="bg-gray-700 rounded-lg shadow-lg transform hover:scale-110 transition-transform duration-900">
+                                <a href="#">
+                                    <img src="{{ $producto->imagen }}" alt="Product" class="rounded-t-lg" style="width: 400px; height: 300px;">
+                                    <div class="p-4">
+                                        <h3 class="text-lg font-medium mb-2">{{$producto->nombre}}</h3>
+                                        <p class="text-gray-500 mb-4 line-clamp-1">{{$producto->descripcion}}</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xl font-bold">${{$producto->precio}}</span>
+                                            <p class="px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-indigo-600">Producto Agotado</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div> -->
+                            @endif
                         @endforeach
                     </div>
                 </div>
             </section>
         </div>
 
-        {{ $productos->links() }}
+        
     </div>
-    
+    {{ $productos->links() }}
 </div>
 
 

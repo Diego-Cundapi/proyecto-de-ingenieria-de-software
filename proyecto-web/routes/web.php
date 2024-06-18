@@ -6,14 +6,23 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CarritoController;
 use \App\Http\Controller\CategoriaController;
+use \App\Http\Controller\ComprasController;
 use App\Http\Livewire\ShowPage;
 
-
+//ruta raiz
 Route::get('/', \App\Http\Livewire\ShowPage::class)->name('index');
 
+//ruta para crud de categorias
 Route::resource('/dashboard/categoria', \App\Http\Controllers\CategoriaController::class)->middleware(['auth', 'verified','can:dashboard'])->names('categoria');
 
+//ruta para ver un producto
 Route::get('/productos/{producto?}', ShowPage::class)->name('producto');
+
+//ruta para que el cliente vea las compras que ha hecho
+Route::get('/compras', [\App\Http\Controllers\ComprasController::class, 'index'])->name('vercompras');
+Route::get('/compras/{detalle}', [\App\Http\Controllers\ComprasController::class, 'detalle'])->name('detallecompra');
+
+
 
 //ruta para entrar al dashboard
 Route::get('/dashboard', \App\Http\Livewire\Dashboard::class)->middleware(['auth', 'verified','can:dashboard'])->name('dashboard');
@@ -25,7 +34,6 @@ Route::resource('/dashboard/productos', ProductosController::class)->middleware(
 Route::resource('/dashboard/ventas', PedidoController::class)->middleware(['auth', 'verified','can:dashboard'])->names('ventas');
 
 //rutas del carrito
-
 Route::group(['middleware' => ['auth', 'verified']], function(){
     Route::get('/carrito', [\App\Http\Controllers\CarritoController::class,'index'])->name('carrito.index');
     Route::post('/agregarproducto', [\App\Http\Controllers\CarritoController::class,'agregarProducto'])->name('carrito.agregarproducto');

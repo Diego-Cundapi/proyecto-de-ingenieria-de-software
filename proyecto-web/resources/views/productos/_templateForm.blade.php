@@ -6,7 +6,7 @@
     <title>Refaccionara ALA</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="text-black bg-gradient-to-r from-slate-800 to-slate-900 p-4">
+<body class="text-black bg-gray-900 p-4">
       
 
     @yield('content')

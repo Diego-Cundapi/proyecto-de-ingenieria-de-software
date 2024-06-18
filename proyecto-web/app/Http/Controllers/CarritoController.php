@@ -34,9 +34,16 @@ class CarritoController extends Controller
     }
 
     public function incrementarProducto(Request $request){
-        $item = Cart::content()->where("rowId",$request->id)->first();
+         $item = Cart::content()->where("rowId",$request->id)->first();
+    $producto = Producto::find($item->id);
+    
+    // Verificar si la cantidad pedida supera la cantidad disponible
+    if($item->qty < $producto->disponible){
         Cart::update($request->id,["qty" => $item->qty+1]);
         return redirect()->route('carrito.index');
+    }else{
+        return redirect()->route('carrito.index')->with('error', 'No puedes pedir más cantidad de este producto');
+    }
     }
 
     public function decrementarProducto(Request $request){
@@ -78,6 +85,11 @@ class CarritoController extends Controller
                 $detalle->pedido_id = $pedido->id;
                 $detalle->producto_id = $item->id;
                 $detalle->save();
+
+                // Disminuir la cantidad disponible del producto en la tabla productos
+                $producto = Producto::find($item->id);
+                $producto->disponible -= $item->qty;
+                $producto->save();
             }
 
             Cart::destroy();

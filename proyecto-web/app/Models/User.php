@@ -37,4 +37,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return 'profile/username';
     } */
     
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class);
+    }
 }

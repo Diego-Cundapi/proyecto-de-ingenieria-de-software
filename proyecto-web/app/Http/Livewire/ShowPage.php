@@ -48,7 +48,7 @@ class ShowPage extends Component
             $productos->where('categories_id', $this->category);
         }
 
-        $productos = $productos->with('categoria')->latest()->paginate(12);
+        $productos = $productos->with('categoria')->latest()->paginate(6);
 
         return view('livewire.show-page', [
             'categories' => $categories,
