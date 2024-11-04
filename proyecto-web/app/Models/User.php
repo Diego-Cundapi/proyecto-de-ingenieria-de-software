@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+// use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles; 
 
-class User extends Authenticatable implements MustVerifyEmail
+// class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    // use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory;
     use HasRoles; 
 
     protected $fillable = [
@@ -28,17 +30,4 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-   /*  public function adminlte_profile_url()
-    {
-        return 'profile/username';
-    } */
-    
-    public function pedidos()
-    {
-        return $this->hasMany(Pedido::class);
-    }
 }

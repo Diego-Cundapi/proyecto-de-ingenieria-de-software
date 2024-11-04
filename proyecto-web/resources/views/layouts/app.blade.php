@@ -14,11 +14,11 @@
         @livewireStyles
     </head>
 
-    @if(request()->routeIs('dashboard'))
+    @if(request()->routeIs('dashboard') || request()->routeIs('tablero'))
     <body class="min-h-screen bg-white">
         <div class="">
             <!-- Page Heading  en caso de que este logeado-->
-            @if(request()->routeIs('dashboard'))
+            @if(request()->routeIs('dashboard') || request()->routeIs('tablero'))
                 <!-- no incluir el header -->
             @else
                 @include('layouts/navigation')
@@ -34,7 +34,7 @@
     <body class="flex flex-col min-h-[100dvh] bg-gray-900">
         <div class="">
             <!-- Page Heading  en caso de que este logeado-->
-            @if(request()->routeIs('dashboard'))
+            @if(request()->routeIs('dashboard') || request()->routeIs('tablero'))
                 <!-- no incluir el header -->
             @else
                 @include('layouts/navigation')
@@ -47,9 +47,8 @@
     @livewireScripts
     </body>
     @endif
-    @if(request()->routeIs('dashboard'))
+    @if(!request()->routeIs('dashboard') && !request()->routeIs('tablero'))
 
-    @else
     <footer class="bg-gray-900 text-white py-6 px-6 md:px-8">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <p>&copy; 2024 Autopartes ALA. Todos los derechos reservados.</p>
@@ -59,7 +58,6 @@
             <a href="#" class="hover:text-gray-700">Contactanos</a>
         </nav>
     </div>
+    </footer>
     @endif
-</footer>
-
 </html>

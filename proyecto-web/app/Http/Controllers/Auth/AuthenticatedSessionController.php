@@ -29,10 +29,10 @@ class AuthenticatedSessionController extends Controller
         $user = Auth::user();
         $request->session()->regenerate();
         if ($user->hasRole('admin')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('tablero');
         }
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->route('index');
     }
 
     /**

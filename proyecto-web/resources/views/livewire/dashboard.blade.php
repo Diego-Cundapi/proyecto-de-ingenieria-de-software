@@ -4,7 +4,7 @@
     @section('title', 'Dashboard')
 
     @section('content_header')
-        <h1 class="">Panel de Administración</h1>
+        <h1 class="">Panel de inventario</h1>
     @stop
 
     @section('content')
@@ -28,18 +28,19 @@
         <div class="px-2 py-2">
             <table class="table">
                 <thead>
-                    <tr> 
-                        <th class="border border-slate-400 px-4 py-2">Categoría</th>
-                        <th class="border border-slate-400 px-4 py-2">Nombre</th>
-                        <th class="border border-slate-400 px-4 py-2">Modelo</th>
-                        <th class="border border-slate-400 px-4 py-2">Marca</th>
-                        <th class="border border-slate-400 px-4 py-2">Precio</th>
-                        <th class="border border-slate-400 px-4 py-2">Clave</th>
-                        <th class="border border-slate-400 px-4 py-2">Descripción</th>
-                        <th class="border border-slate-400 px-4 py-2">Imagen</th>
-                        <th class="border border-slate-400 px-4 py-2">Disponible</th>
-                        <th class="border border-slate-400 px-4 py-2">Acciones</th>
-                    </tr>
+                <tr> 
+                    <th class="border border-slate-400 px-4 py-2 text-center">Categoría</th>
+                    <th class="border border-slate-400 px-4 py-2 text-center">Nombre</th>
+                    <th class="border border-slate-400 px-4 py-2 text-center">Modelo</th>
+                    <th class="border border-slate-400 px-4 py-2 text-center">Marca</th>
+                    <th class="border border-slate-400 px-4 py-2 text-center">Precio</th>
+                    <th class="border border-slate-400 px-4 py-2 text-center">Clave</th>
+                    <th class="border border-slate-400 px-4 py-2 text-center">Descripción</th>
+                    <th class="border border-slate-400 px-4 py-2 text-center">Imagen</th>
+                    <th class="border border-slate-400 px-4 py-2 text-center">Disponible</th>
+                    <th class="border border-slate-400 px-4 py-2 text-center">Acciones</th>
+                </tr>
+
                 </thead>
                 <tbody>
                     @forelse ($productos as $producto)
