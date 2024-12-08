@@ -7,11 +7,15 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CarritoController;
 use \App\Http\Controller\CategoriaController;
 use \App\Http\Controller\ComprasController;
+use \App\Http\Controllers\BotManController;
 use App\Http\Livewire\ShowPage;
 use App\Http\Livewire\Tablero;
 
 //ruta raiz
 Route::get('/', \App\Http\Livewire\ShowPage::class)->name('index');
+
+
+Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
 
 //ruta para crud de categorias
 Route::resource('/dashboard/categoria', \App\Http\Controllers\CategoriaController::class)->middleware(['auth','can:dashboard'])->names('categoria');
@@ -36,6 +40,9 @@ Route::middleware(['auth','can:dashboard'])->group(function () {
 
     //rutas del crud de los pedidos
     Route::resource('/dashboard/ventas', PedidoController::class)->names('ventas');
+
+    //ruta para mostrar la lista de clientes
+    Route::get('/dashboard/clientes', \App\Http\Livewire\Clientes::class)->name('clientes');
 });
 
 //rutas del carrito

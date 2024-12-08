@@ -329,6 +329,11 @@ return [
             'url' => '/dashboard/ventas',
             'icon' => 'fas fa-fw fa-dollar-sign',
         ],
+        [
+            'text' => 'Clientes',
+            'url' => '/dashboard/clientes',
+            'icon' => 'fas fa-fw fa-users',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

@@ -2,11 +2,8 @@
 @if (auth()->check())
     <header class="bg-gray-900 text-white py-4 px-6 md:px-8 flex items-center justify-between">
         <div class="text-2xl font-bold">
-            <a href="">Autopartes ALA</a>
+            <a href="{{ route('index') }}">Autopartes ALA</a>
         </div>
-            <!-- <div class="">
-                <img src="{{ asset('imagenes/logo.jpg') }}" class="h-10" alt="Logo">
-            </div> -->
             <div class="flex items-center space-x-4">
                 <span class="text-white">¡Bienvenido, {{ Auth::user()->name }}!</span>
 
@@ -32,7 +29,7 @@
     <header class="bg-gray-900 text-white py-4 px-6 md:px-8 flex items-center justify-between">
 
         <div class="text-2xl font-bold">
-            <a href="">Autopartes ALA</a>
+            <a href="{{ route('index') }}">Autopartes ALA</a>
         </div>
             <!-- <div class="">
                 <img src="{{ asset('imagenes/logo.jpg') }}" class="h-10" alt="Logo">
@@ -48,6 +45,4 @@
                 </div>
     </header>
 @endif
-
-
 </div>
